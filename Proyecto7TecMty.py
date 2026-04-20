@@ -55,3 +55,10 @@ print(educacion_os)
 """7. ticket sgenerados por cada OS de esccritorio"""
 tickets_generados = df_full.groupby("computer_os")["computer_tickets"].sum()
 print(tickets_generados)
+
+with pd.ExcelWriter("resultados_consultas.xlsx", engine="xlsxwriter") as writer:
+    porcentajes_os.to_excel(writer, sheet_name="porcentaje_uso_OS")
+    porcentaje_cel.to_excel(writer, sheet_name="porcentaje_uso_CEL")
+    promedio_edad_os.to_excel(writer, sheet_name="edad computer_OS")
+    educacion_os.to_excel(writer, sheet_name="education_level_OS")
+    tickets_generados.to_excel(writer, sheet_name="computer_tickets_OS")
