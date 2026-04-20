@@ -51,3 +51,7 @@ print(promedio_edad_os)
 """6. sacamos el nivel educativio promedio de la gente que usa el OSde esccritorio"""
 educacion_os = df_full.groupby("computer_os")["education_level"].mean()
 print(educacion_os)
+
+"""7. ticket sgenerados por cada OS de esccritorio"""
+tickets_generados = df_full.groupby("computer_os")["computer_tickets"].sum()
+print(tickets_generados)
