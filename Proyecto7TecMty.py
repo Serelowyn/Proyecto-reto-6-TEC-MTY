@@ -14,6 +14,9 @@ df_test2 = pd.read_csv(r"test2.csv")
 df_train2 = pd.read_csv(r"Train2.csv")
 df_train = pd.read_csv(r"Train.csv")
 
+print(df_test2.columns)
+print(df_train2.columns)
+
 """2. Se concatenan los 4 df's"""
 df_full = pd.concat([df_test, df_test2, df_train2, df_train], ignore_index=True)
 
@@ -32,5 +35,12 @@ print(porcentajes_os)
 print(porcentajes_os.sum())
 
 """calculamos los promedios de uso de sistemas operativos de celular"""
-mobile_percent = df_full["Mobile_OS"].value_counts(normalize=True) * 100
-print(mobile_percent)
+porcentaje_cel = df_full["Mobile_OS"].value_counts(normalize=True) * 100
+print(porcentaje_cel)
+
+"""5. sacamos la edad promedio de la gente que usa el OS"""
+promedio_edad_os = df_full.groupby("Computer_OS")["Age"].mean()
+print(promedio_edad_os)
+df_full.columns.tolist()
+df_full.groupby("Computer_OS")["Age"].count()
+df_full.groupby("Mobile_OS")["Age"].count()
