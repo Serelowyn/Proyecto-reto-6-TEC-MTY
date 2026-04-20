@@ -24,3 +24,9 @@ df_full[" Mobile_OS"] = df_full[" Mobile_OS"].fillna("no registrado")
 """en la parte de arriba se encontro que los nombres Computer_OS y Mobile_OS tenian un espacio en la parte del inicio adicional, entonces aqui lo elimino"""
 df_full.columns = df_full.columns.str.strip().str.replace(" ", "")
 print(df_full.columns.tolist())#verificar que los cambios hayan sido exitosos
+
+"""4. calculamos los promedios de uso de cada sistema operativo"""
+porcentajes_os = df_full["Computer_OS"].value_counts(normalize=True) * 100
+print(porcentajes_os)
+"""comprobamos que la suma de todo de 100"""
+print(porcentajes_os.sum())
