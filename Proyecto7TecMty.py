@@ -30,3 +30,7 @@ porcentajes_os = df_full["Computer_OS"].value_counts(normalize=True) * 100
 print(porcentajes_os)
 """comprobamos que la suma de todo de 100"""
 print(porcentajes_os.sum())
+
+"""calculamos los promedios de uso de sistemas operativos de celular"""
+mobile_percent = df_full["Mobile_OS"].value_counts(normalize=True) * 100
+print(mobile_percent)
