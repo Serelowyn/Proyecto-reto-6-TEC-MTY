@@ -14,19 +14,24 @@ df_test2 = pd.read_csv(r"test2.csv")
 df_train2 = pd.read_csv(r"Train2.csv")
 df_train = pd.read_csv(r"Train.csv")
 
+"""se identifican los dataframe que posiblemente sean los causantes del problema del commit pasado"""
 print(df_test2.columns)
 print(df_train2.columns)
+
+"""aqui eliminamos los espacios de todas las colunmnas"""
+df_test2.columns = df_test2.columns.str.strip()
+df_train2.columns = df_train2.columns.str.strip()
+
+"""verificamos resultados"""
+print(df_test2.columns.tolist())
+print(df_train2.columns.tolist())
 
 """2. Se concatenan los 4 df's"""
 df_full = pd.concat([df_test, df_test2, df_train2, df_train], ignore_index=True)
 
 """3. Aqui movemos las dos columnas que se indica en las instrucciones"""
-df_full[" Computer_OS"] = df_full[" Computer_OS"].fillna("no registrado")
-df_full[" Mobile_OS"] = df_full[" Mobile_OS"].fillna("no registrado")
-
-"""en la parte de arriba se encontro que los nombres Computer_OS y Mobile_OS tenian un espacio en la parte del inicio adicional, entonces aqui lo elimino"""
-df_full.columns = df_full.columns.str.strip().str.replace(" ", "")
-print(df_full.columns.tolist())#verificar que los cambios hayan sido exitosos
+df_full["Computer_OS"] = df_full["Computer_OS"].fillna("no registrado")
+df_full["Mobile_OS"] = df_full["Mobile_OS"].fillna("no registrado")
 
 """4. calculamos los promedios de uso de cada sistema operativo"""
 porcentajes_os = df_full["Computer_OS"].value_counts(normalize=True) * 100
