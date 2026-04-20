@@ -47,3 +47,7 @@ print(porcentaje_cel)
 """5. sacamos la edad promedio de la gente que usa el OS"""
 promedio_edad_os = df_full.groupby("computer_os")["age"].mean()
 print(promedio_edad_os)
+
+"""6. sacamos el nivel educativio promedio de la gente que usa el OSde esccritorio"""
+educacion_os = df_full.groupby("computer_os")["education_level"].mean()
+print(educacion_os)
